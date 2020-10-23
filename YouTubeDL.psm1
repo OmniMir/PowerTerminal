@@ -1,5 +1,5 @@
 # Dowload video from YouTube or other video-hostings with youtube-dl+ffmpeg
-Function Dowload-Video-From-YouTube ($link, $format) {
+Function Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 	#Set YouTube-DL
 	$ytdlFolder = "C:\Program Files\YouTube-DL\"
 	$ytdlExe = "youtube-dl.exe"
@@ -8,6 +8,11 @@ Function Dowload-Video-From-YouTube ($link, $format) {
 	$downloadFolder = $HOME + "\Desktop\Download\"
 	$downloadFile = "%(title)s__%(resolution)s.%(ext)s"
 	$dl = $downloadFolder + $downloadFile
+	#Set Authentication
+	$authentication = ""
+	if ($user) {
+		$authentication = "--username " + $user + " --password " + $password + " "
+	}
  
 	#Script in Work
 	#Set YouTube-DL Title
@@ -35,13 +40,13 @@ Function Dowload-Video-From-YouTube ($link, $format) {
 		else {
 			$format = "-f " + $format
 		}
-		$arguments = $format + " -o " + $dl + " " + $link
 		#Download Process
+		$arguments = $format + " -o " + $dl + " " + $authentication + $link
 		Start-Process -FilePath $ytdl -ArgumentList $arguments -NoNewWindow -Wait
 	}
 	#Only Show formats
 	elseif ($link) {
-		$arguments = "-F " + $link
+		$arguments = "-F " + $authentication + $link
 		Start-Process -FilePath $ytdl -ArgumentList $arguments -NoNewWindow -Wait
 	}
 	#Show Help without arguments
@@ -53,8 +58,11 @@ Function Dowload-Video-From-YouTube ($link, $format) {
 		Write-Output "For download subtitles: 'youtube https://yourlink.to/video subs'"
 		Write-Output "For download automated subtitles: 'youtube https://yourlink.to/video asubs'"
 		Write-Output "For download only music: 'youtube https://yourlink.to/video mp3'"
+		Write-Output "`r"
+		Write-Output "For view all variants with Authentication: 'youtube https://yourlink.to/video formats login password'"
+		Write-Output "For download variant (video+audio) with Authentication: 'youtube https://yourlink.to/video 137+22 login password'"
 	}
 	#Set Default Title
 	$host.UI.RawUI.WindowTitle = "PowerShell"
 }
-Set-Alias youtube -Value Dowload-Video-From-YouTubeSet-Alias youtube -Value Dowload-Video-From-YouTube
+Set-Alias youtube -Value Dowload-Video-From-YouTube
