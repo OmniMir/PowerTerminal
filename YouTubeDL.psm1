@@ -36,6 +36,12 @@ Function Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 		elseif ($format -eq "mp3") {
 			$format = "--extract-audio --audio-format mp3 --audio-quality 0"
 		}
+		#Not Download Only Show formats as null format (For example use with password)
+		elseif ($format -eq "formats") {
+			$arguments = "-F " + $authentication + $link
+			Start-Process -FilePath $ytdl -ArgumentList $arguments -NoNewWindow -Wait
+			Return
+		}
 		#Download Video in Custom Format
 		else {
 			$format = "-f " + $format
