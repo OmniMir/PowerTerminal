@@ -54,7 +54,7 @@
 				"name": "Ubuntu",
 				"guid": "{bd166509-abe4-44a4-8552-ec0beaa56c67}",
 				"commandline": "wsl.exe -d Ubuntu",
-				"startingDirectory": "C:\\Users\\kapsilon\\AppData\\Local\\Packages\\CanonicalGroupLimited.UbuntuonWindows_79rhkp1fndgsc\\LocalState\\rootfs\\home\\kapsilon\\",
+				"startingDirectory": "\\\\wsl$\\Ubuntu\\home\\kapsilon",
 				"icon": "C:\\Windows\\IconUSE\\Ubuntu.ico"
 			},
 			{
