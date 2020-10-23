@@ -11,13 +11,15 @@ Function Docker-Simple-Control($command) {
 		start {
 			#docker pull alpine/nikto
 			#docker pull bash
+			#docker pull browsh/browsh
 			#docker pull cirrusci/flutter
 			#docker pull chocobozzz/peertube
+			#docker pull dexec/lua
 			#docker pull elasticsearch
 			#docker pull gitea/gitea
-			#docker pull gogs/gogs
 			#docker pull google/dart
 			#docker pull haskell
+			#docker pull securecodebox/nmap
 			#docker pull ipfs/go-ipfs
 			#docker pull kylemanna/openvpn
 			#docker pull libreoffice/online
@@ -26,6 +28,7 @@ Function Docker-Simple-Control($command) {
 			#docker pull mathematica12/mathematica12
 			#docker pull microsoft/playwright
 			#docker pull mcr.microsoft.com/powershell
+			#docker pull nextcloud
 			#docker pull nginx
 			#docker pull nickblah/lua
 			#docker pull pandoc/core
