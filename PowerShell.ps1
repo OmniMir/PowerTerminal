@@ -25,7 +25,7 @@ Function Prompt {
 Set-PSReadLineOption -Colors @{
 	Command   = 'DarkBlue'
 	Operator  = 'DarkYellow'
-	Parameter = 'DarkYellow'
+	Parameter = 'Red'
 	String    = 'White'
 }
 
