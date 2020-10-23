@@ -4,6 +4,7 @@
 # Importing useful modules
 Import-Module ($PSScriptRoot + "\Base64.psm1")
 Import-Module ($PSScriptRoot + "\Docker.psm1")
+Import-Module ($PSScriptRoot + "\Hash.psm1")
 Import-Module ($PSScriptRoot + "\LittleApps.psm1")
 Import-Module ($PSScriptRoot + "\RoboCopy.psm1")
 Import-Module ($PSScriptRoot + "\YouTubeDL.psm1")
