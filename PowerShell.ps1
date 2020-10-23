@@ -2,6 +2,7 @@
 #Copy-Item PowerShell.ps1 -Destination "${home}\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1"
 
 # Importing useful modules
+Import-Module ($PSScriptRoot + "\Base64.psm1")
 Import-Module ($PSScriptRoot + "\Docker.psm1")
 Import-Module ($PSScriptRoot + "\LittleApps.psm1")
 Import-Module ($PSScriptRoot + "\RoboCopy.psm1")
