@@ -1,5 +1,6 @@
 # Constants
 $Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
+$LocalRepository = "D:\Project8\PowerTerminal\"
 $Systems = "git", "go", "node", "php", "python"
 $Repository = "omnimir/"
 $Tag = ":latest"
@@ -130,6 +131,15 @@ Function Docker-Simple-Build($file, $name) {
 Set-Alias dockbuild -Value Docker-Simple-Build
 
 # Arguments AutoCompletion for dock and dockbuild
+# Docker Build All Images
+Function Docker-All-Build() {
+	$Systems | ForEach-Object {
+		Docker-Simple-Build($LocalRepository + $_ + ".Dockerfile", $Repository + $_ + $Tag )
+	}
+}
+Set-Alias dockbuildall -Value Docker-All-Build
+
+# Arguments AutoCompletion for dock
 Register-ArgumentCompleter -CommandName Docker-Simple-Control -ParameterName command -ScriptBlock {
 	param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
