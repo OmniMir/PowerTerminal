@@ -12,7 +12,7 @@ Import-Module ($PSScriptRoot + "\YouTubeDL.psm1")
 
 # Simple updating of PowerShell Profile & Windows Terminal Settings
 Copy-Item ($PSScriptRoot + "\PowerShell.ps1") -Destination ($PSScriptRoot + "\Microsoft.PowerShell_profile.ps1")
-Copy-Item ($PSScriptRoot + "\Terminal.json") -Destination "${home}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
+Copy-Item ($PSScriptRoot + "\Terminal.jsonc") -Destination "${home}\AppData\Local\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState\settings.json"
 
 # Fix for Bug with Big letters 
 Remove-Module -Name PSReadline
