@@ -158,7 +158,7 @@
 	// To learn more about keybindings, visit https://aka.ms/terminal-keybindings
 	"keybindings": [
 		// Press Ctrl+Shift+F to open the search box
-		{ "command": "find", "keys": "ctrl+shift+f" },
+		{ "command": "find", "keys": "alt+f" },
 
 		// Press Ctrl+Shift+P to open a new pane.
 		// - "split": "auto" makes this pane open in the direction that provides the most surface area.
@@ -166,7 +166,7 @@
 		// To learn more about panes, visit https://aka.ms/terminal-panes
 		{
 			"command": { "action": "splitPane", "split": "auto", "splitMode": "duplicate" },
-			"keys": "ctrl+shift+p"
+			"keys": "alt+p"
 		}
 	]
 }
