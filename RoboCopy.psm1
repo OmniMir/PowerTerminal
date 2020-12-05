@@ -4,14 +4,15 @@
 # Copying all folders and files
 Function RoboCopy-All-Files($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
-		robocopy  `
-			$oldDirectory `
-			$newDirectory `
-			/E `
-			/COPY:DAT `
-			/DCOPY:DAT `
-			/R:100 `
-			/sl
+		#Copy Options 
+		##subdirectories with Empty directories
+		##files with Data,Attributes,Timestamps
+		##directories with Data,Attributes,Timestamps
+		##create copies of Symbolic Links
+		##only 100 Retries
+		$options = "/E /COPY:DAT /DCOPY:DAT /SL /R:100"
+		#Copy Process
+		Invoke-Expression "robocopy '$oldDirectory' '$newDirectory' $options"
 	}
  else {
 		Write-Output "difftree path/to/old/dir path/to/new/dir"
