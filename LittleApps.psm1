@@ -36,3 +36,9 @@ Function Generate-New-GUID() {
 	[guid]::NewGuid().ToString()
 }
 Set-Alias guid -Value Generate-New-GUID
+
+# Windows grep command via RipGrep
+Function Searh-As-GREP-Via-RipGREP($target) {
+	Start-Process -FilePath "C:\Program Files\RipGrep\rg.exe" -ArgumentList "$target -N -S --sort path" -NoNewWindow -Wait
+}
+Set-Alias grep -Value Searh-As-GREP-Via-RipGREP
