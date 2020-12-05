@@ -31,7 +31,7 @@
 			"cursorShape": "vintage",
 			"fontFace": "Input",
 			"fontSize": 11,
-			"historySize": 1001,
+			"historySize": 10000,
 			"padding": "0, 10, 0, 0"
 		},
 		"list": [
