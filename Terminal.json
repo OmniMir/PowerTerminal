@@ -40,35 +40,40 @@
 				"guid": "{d56d9db2-cf0a-49ee-8acb-c91f37c0167b}",
 				"commandline": "pwsh.exe",
 				"startingDirectory": "%USERPROFILE%",
-				"icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png"
+				"icon": "ms-appx:///ProfileIcons/{61c54bbd-c2c6-5271-96e7-009a87ff44bf}.png",
+				"tabColor": "#073642"
 			},
 			{
 				"name": "Ubuntu",
 				"guid": "{bd166509-abe4-44a4-8552-ec0beaa56c67}",
 				"commandline": "wsl.exe -d Ubuntu",
 				"startingDirectory": "\\\\wsl$\\Ubuntu\\home\\kapsilon",
-				"icon": "C:\\Windows\\IconUSE\\Ubuntu.ico"
+				"icon": "C:\\Windows\\IconUSE\\Ubuntu.ico",
+				"tabColor": "#073642"
 			},
 			{
 				"name": "SSH K2",
 				"guid": "{1550d0c4-41cc-4bb1-8f35-07c7f23d1291}",
 				"commandline": "powershell.exe -NoExit -Command \"ssh K2\"",
 				"startingDirectory": "%USERPROFILE%",
-				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
+				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png",
+				"tabColor": "#073642"
 			},
 			{
 				"name": "SSH Knb",
 				"guid": "{8d204de7-04e2-4245-8ef9-4233e4902549}",
 				"commandline": "powershell.exe -NoExit -Command \"ssh Knb\"",
 				"startingDirectory": "%USERPROFILE%",
-				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
+				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png",
+				"tabColor": "#073642"
 			},
 			{
 				"name": "SSH Kpi",
 				"guid": "{c31035ba-4793-4c3b-9f1b-14dffc7ed5af}",
 				"commandline": "powershell.exe -NoExit -Command \"ssh Kpi\"",
 				"startingDirectory": "%USERPROFILE%",
-				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
+				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png",
+				"tabColor": "#073642"
 			},
 			{
 				"name": "cmd",
