@@ -118,7 +118,7 @@ Function Docker-Simple-Control($command) {
 }
 Set-Alias dock -Value Docker-Simple-Control
 
-# Docker Build
+# Docker Build Image
 Function Docker-Simple-Build($file, $name) {
 	if ($file -and $name) {
 		docker build -f $file -t $name .
@@ -130,7 +130,6 @@ Function Docker-Simple-Build($file, $name) {
 }
 Set-Alias dockbuild -Value Docker-Simple-Build
 
-# Arguments AutoCompletion for dock and dockbuild
 # Docker Build All Images
 Function Docker-All-Build() {
 	$Systems | ForEach-Object {
@@ -150,6 +149,7 @@ Register-ArgumentCompleter -CommandName Docker-Simple-Control -ParameterName com
 		"$_"
 	}
 }
+# Arguments AutoCompletion for dockbuild
 Register-ArgumentCompleter -CommandName Docker-Simple-Build -ParameterName name -ScriptBlock {
 	param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
