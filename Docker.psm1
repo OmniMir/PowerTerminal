@@ -18,7 +18,6 @@ Function Docker-Simple-Control($command) {
 			#docker pull elasticsearch
 			#docker pull gitea/gitea
 			#docker pull google/dart
-			#docker pull haskell
 			#docker pull securecodebox/nmap
 			#docker pull ipfs/go-ipfs
 			#docker pull kylemanna/openvpn
@@ -35,6 +34,7 @@ Function Docker-Simple-Control($command) {
 			#docker pull postgres
 			docker pull omnimir/git
 			docker pull omnimir/go
+			#docker pull omnimir/haskell
 			docker pull omnimir/node
 			docker pull omnimir/php
 			docker pull omnimir/python
