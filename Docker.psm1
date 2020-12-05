@@ -1,6 +1,6 @@
 # Constants
-$Administration = "start", "update", "conts", "contsrm", "ims", "imsrm"
-$Systems = "git", "go", "node", "python"
+$Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
+$Systems = "git", "go", "node", "php", "python"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -46,16 +46,16 @@ Function Docker-Simple-Control($command) {
 		update {
 			docker images --format "{{.Repository}}:{{.Tag}}" | ForEach-Object { docker pull "$_" }
 		}
-		conts {
+		containers {
 			docker ps
 		}
-		contsrm {
+		rm-containers {
 			docker rm $(docker ps -a -q)
 		}
-		ims {
+		images {
 			docker images
 		}
-		imsrm {
+		rm-images {
 			docker rmi $(docker images -q)
 		}
 		git {
@@ -107,10 +107,10 @@ Function Docker-Simple-Control($command) {
 				/bin/bash
 		}
 		default {
-			Write-Output "Administration"
-			Write-Output "  start, update, conts, contsrm, ims, imsrm"
-			Write-Output "Systems"
-			Write-Output "  git, go, node, python"
+			Write-Host "Administration" -BackgroundColor White -ForegroundColor Black
+			Write-Output $Administration
+			Write-Host "Systems" -BackgroundColor White -ForegroundColor Black
+			Write-Output $Systems
 		}
 	}
 	$host.UI.RawUI.WindowTitle = "PowerShell"
