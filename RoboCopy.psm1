@@ -15,7 +15,7 @@ Function RoboCopy-All-Files($oldDirectory, $newDirectory) {
 		Invoke-Expression "robocopy '$oldDirectory' '$newDirectory' $options"
 	}
  else {
-		Write-Output "difftree path/to/old/dir path/to/new/dir"
+		Write-Output "copyall path/to/old/dir path/to/new/dir"
 	}
 }
 Set-Alias copyall -Value RoboCopy-All-Files
@@ -23,7 +23,7 @@ Set-Alias copyall -Value RoboCopy-All-Files
 # Create tree of files with zero length
 Function RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
-		robocopy  `
+		robocopy `
 			$oldDirectory `
 			$newDirectory `
 			/CREATE `
@@ -33,14 +33,14 @@ Function RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 			/R:100
 	}
  else {
-		Write-Output "difftree path/to/old/dir path/to/new/dir"
+		Write-Output "copytree path/to/old/dir path/to/new/dir"
 	}
 }
 Set-Alias copytree -Value RoboCopy-Zero-Tree
 
 # Very simple diff of file trees
 Function Compare-Difference-Of-Trees($oldDirectory, $newDirectory, $diff) {
-	if ($oldDirectory -and $new -and $diff) {
+	if ($oldDirectory -and $newDirectory -and $diff) {
 		$treeold = tree $oldDirectory
 		$treenew = tree $newDirectory
 		Compare-Object $treeold $treenew > $diff
