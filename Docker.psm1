@@ -101,7 +101,7 @@ Function Docker-Simple-Control($command) {
 		python {
 			docker run -it --rm `
 				--name python `
-				-v ${home}/_PYPATH:/usr/local/lib/python3.7/site-packages `
+				-v ${home}/_PYPATH:/usr/local/lib/python3.8/site-packages `
 				-v ${pwd}:/project `
 				-w /project `
 				omnimir/python:latest `
