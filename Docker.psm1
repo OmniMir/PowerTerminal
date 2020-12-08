@@ -1,7 +1,7 @@
 # Constants
 $Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
-$Systems = "git", "go", "node", "php", "python"
+$Systems = "cpp", "git", "go", "node", "php", "python"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -59,6 +59,14 @@ Function Docker-Simple-Control($command) {
 		}
 		rm-images {
 			docker rmi $(docker images -q)
+		}
+		cpp {
+			docker run -it --rm `
+				--name cpp `
+				-v ${pwd}:/project `
+				-w /project `
+				omnimir/cpp:latest `
+				/bin/bash
 		}
 		git {
 			docker run -it --rm `
