@@ -143,7 +143,9 @@ Set-Alias dockbuild -Value Docker-Simple-Build
 # Docker Build All Images
 Function Docker-All-Build() {
 	$Systems | ForEach-Object {
-		Docker-Simple-Build($LocalRepository + $_ + ".Dockerfile", $Repository + $_ + $Tag )
+		$dockerFile = $LocalRepository + $_ + ".Dockerfile"
+		$imageName = $Repository + $_ + $Tag
+		Docker-Simple-Build $dockerFile $imageName
 	}
 }
 Set-Alias dockbuildall -Value Docker-All-Build
