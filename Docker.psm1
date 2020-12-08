@@ -93,6 +93,7 @@ Function Docker-Simple-Control($command) {
 			docker run -it --rm `
 				--name node `
 				-p 8080:8080 `
+				-v ${home}/_NODEPATH:/usr/local/lib/node_modules `
 				-v ${pwd}:/project `
 				-w /project `
 				omnimir/node:latest `
