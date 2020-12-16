@@ -1,7 +1,7 @@
 # Constants
 $Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
-$Systems = "cpp", "git", "go", "node", "php", "python"
+$Systems = "cpp", "git", "go", "node", "pandoc","php", "python"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -32,12 +32,12 @@ Function Docker-Simple-Control($command) {
 			#docker pull nextcloud
 			#docker pull nginx
 			#docker pull nickblah/lua
-			#docker pull pandoc/core
 			#docker pull postgres
 			docker pull omnimir/git
 			docker pull omnimir/go
 			#docker pull omnimir/haskell
 			docker pull omnimir/node
+			docker pull omnimir/pandoc
 			docker pull omnimir/php
 			docker pull omnimir/python
 			#docker pull romancin/ptokax (dc++)
@@ -99,6 +99,13 @@ Function Docker-Simple-Control($command) {
 				omnimir/node:latest `
 				/bin/bash
 		}
+		pandoc {
+			docker run -it --rm `
+				--name pandoc `
+				-v ${pwd}:/project `
+				-w /project `
+				omnimir/pandoc:latest `
+				/bin/bash
 		php {
 			docker run -it --rm `
 				--name php `
