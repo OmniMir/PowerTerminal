@@ -1,7 +1,7 @@
 # Constants
 $Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
-$Systems = "cpp", "git", "go", "node", "pandoc","php", "python"
+$Systems = "cpp", "drives", "git", "go", "node", "pandoc","php", "python"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -33,6 +33,7 @@ Function Docker-Simple-Control($command) {
 			#docker pull nginx
 			#docker pull nickblah/lua
 			#docker pull postgres
+			docker pull omnimir/drives
 			docker pull omnimir/git
 			docker pull omnimir/go
 			#docker pull omnimir/haskell
@@ -67,6 +68,17 @@ Function Docker-Simple-Control($command) {
 				-w /project `
 				omnimir/cpp:latest `
 				/bin/bash
+		}
+		drives {
+			docker run -it --rm `
+				--name drives `
+				-p 5572:5572 `
+				-v ${home}/_RCLONE:/config/rclone `
+				-v ${pwd}:/project `
+				-w /project `
+				omnimir/drives:latest `
+				/bin/bash
+				#rclone rcd --rc-web-gui --rc-addr :5572 --rc-user myname --rc-pass mypassword
 		}
 		git {
 			docker run -it --rm `
