@@ -36,11 +36,12 @@ Function Docker-Simple-Control($command) {
 			docker pull omnimir/drives
 			docker pull omnimir/git
 			docker pull omnimir/go
-			#docker pull omnimir/haskell
+			docker pull omnimir/haskell
 			docker pull omnimir/node
 			docker pull omnimir/pandoc
 			docker pull omnimir/php
 			docker pull omnimir/python
+			#onlyoffice/documentserver
 			#docker pull romancin/ptokax (dc++)
 			#docker pull tensorflow/tensorflow
 			#docker pull wordpress
@@ -118,6 +119,7 @@ Function Docker-Simple-Control($command) {
 				-w /project `
 				omnimir/pandoc:latest `
 				/bin/bash
+		}
 		php {
 			docker run -it --rm `
 				--name php `
