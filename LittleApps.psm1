@@ -42,3 +42,7 @@ Function Searh-As-GREP-Via-RipGREP($target) {
 	Start-Process -FilePath "C:\Program Files\RipGrep\rg.exe" -ArgumentList "$target -N -S --sort path" -NoNewWindow -Wait
 }
 Set-Alias grep -Value Searh-As-GREP-Via-RipGREP
+
+# Android Debug Bridge and Fastboot
+Set-Alias adb -Value "C:\Program Files\ADB\adb.exe"
+Set-Alias fastboot -Value "C:\Program Files\ADB\fastboot.exe"
