@@ -88,8 +88,8 @@ Function Docker-Simple-Control($command) {
 				-v ${pwd}:/project `
 				-w /project `
 				omnimir/drives:latest `
-				/bin/bash
-				#rclone rcd --rc-web-gui --rc-addr :5572 --rc-user myname --rc-pass mypassword
+				/bin/bash -c `
+				"rclone rcd --rc-web-gui --rc-addr :5572 --rc-user myname --rc-pass mypassword; /bin/bash"
 		}
 		#Systems
 		git {
