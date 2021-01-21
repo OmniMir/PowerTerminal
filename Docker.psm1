@@ -1,7 +1,7 @@
 # Constants
 $Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
-$Systems = "cpp", "drives", "git", "go", "http", "node", "pandoc", "php", "python"
+$Systems = "cpp", "drives", "git", "go", "http", "node", "pandoc", "php", "python", "ssh"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -42,6 +42,7 @@ Function Docker-Simple-Control($command) {
 			docker pull omnimir/php
 			docker pull omnimir/python
 			#onlyoffice/documentserver
+			docker pull omnimir/ssh
 			#docker pull romancin/ptokax (dc++)
 			#docker pull tensorflow/tensorflow
 			#docker pull wordpress
@@ -149,6 +150,17 @@ Function Docker-Simple-Control($command) {
 				-w /project `
 				omnimir/python:latest `
 				/bin/bash
+		}
+		ssh {
+			docker run -it --rm `
+				--name ssh `
+				-p 2222:22 `
+				-v ${pwd}:/project `
+				-w /project `
+				omnimir/ssh:latest `
+				/bin/bash -c `
+				"echo 'sshserver:sshserver' | chpasswd; service ssh restart; /bin/bash"
+				#"read -p 'Password: ' password; echo 'sshserver:'${password} | chpasswd; service ssh restart; /bin/bash"
 		}
 		default {
 			Write-Host "Administration" -BackgroundColor White -ForegroundColor Black
