@@ -9,6 +9,7 @@ $Tag = ":latest"
 Function Docker-Simple-Control($command) {
 	$host.UI.RawUI.WindowTitle = "$command | ${pwd}"
 	Switch ($command) {
+		#Administration
 		start {
 			#docker pull alpine/nikto
 			#docker pull bash
@@ -41,8 +42,8 @@ Function Docker-Simple-Control($command) {
 			docker pull omnimir/pandoc
 			docker pull omnimir/php
 			docker pull omnimir/python
-			#onlyoffice/documentserver
 			docker pull omnimir/ssh
+			#docker pull onlyoffice/documentserver
 			#docker pull romancin/ptokax (dc++)
 			#docker pull tensorflow/tensorflow
 			#docker pull wordpress
@@ -90,6 +91,7 @@ Function Docker-Simple-Control($command) {
 				/bin/bash
 				#rclone rcd --rc-web-gui --rc-addr :5572 --rc-user myname --rc-pass mypassword
 		}
+		#Systems
 		git {
 			docker run -it --rm `
 				--name git `
