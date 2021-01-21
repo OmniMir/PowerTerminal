@@ -1,7 +1,10 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y nodejs npm --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		nodejs \
+		npm \
+	&& rm -rf /var/lib/apt/lists/*
 #Get Registry for NPM
 RUN npm config set registry http://registry.npmjs.org/
 #Setting workking user

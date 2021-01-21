@@ -1,7 +1,11 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y golang ca-certificates --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		golang \
+		ca-certificates \
+	&& rm -rf /var/lib/apt/lists/*
 #Setting workking user
 ENV USER=go
 RUN useradd $USER -ms /bin/bash && \

@@ -1,7 +1,10 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y gcc gdb --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		gcc \
+		gdb \
+	&& rm -rf /var/lib/apt/lists/*
 #Setting workking user
 ENV USER=cpp
 RUN useradd -ms /bin/bash $USER && \

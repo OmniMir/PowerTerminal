@@ -1,7 +1,9 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y pandoc && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		pandoc \
+	&& rm -rf /var/lib/apt/lists/*
 #Setting workking user
 ENV USER=pandoc
 RUN useradd $USER -ms /bin/bash && \

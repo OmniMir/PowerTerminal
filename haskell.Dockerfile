@@ -1,7 +1,9 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y haskell-platform --no-install-recommends && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends \
+		haskell-platform \
+	&& rm -rf /var/lib/apt/lists/*
 #Setting workking user
 ENV USER=haskell
 RUN useradd $USER -ms /bin/bash && \

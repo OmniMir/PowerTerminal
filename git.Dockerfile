@@ -1,7 +1,10 @@
 #Parenting container
 FROM debian:testing
 #Installing necessary software
-RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && \
+	apt-get install -y --no-install-recommends \
+		git \
+	&& rm -rf /var/lib/apt/lists/*
 COPY gh.deb /root/gh.deb
 RUN apt-get install -y /root/gh.deb && rm -rf /root/gh.deb
 #Setting workking user
