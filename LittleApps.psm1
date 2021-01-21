@@ -43,6 +43,10 @@ Function Searh-As-GREP-Via-RipGREP($target) {
 }
 Set-Alias grep -Value Searh-As-GREP-Via-RipGREP
 
+
+# NeoFetch for Windows
+Set-Alias version -Value "C:\Program Files\WinFetch\winfetch.exe"
+
 # Android Debug Bridge and Fastboot
 Set-Alias adb -Value "C:\Program Files\ADB\adb.exe"
 Set-Alias fastboot -Value "C:\Program Files\ADB\fastboot.exe"
