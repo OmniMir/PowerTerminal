@@ -1,5 +1,5 @@
 # Constants
-$Administration = "start", "update", "containers", "images", "rm-containers", "rm-images"
+$Administration = "start", "update", "buildall", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
 $Systems = "cpp", "drives", "git", "go", "http", "node", "pandoc", "php", "python", "ssh"
 $Repository = "omnimir/"
@@ -50,6 +50,14 @@ Function Docker-Simple-Control($command) {
 		}
 		update {
 			docker images --format "{{.Repository}}:{{.Tag}}" | ForEach-Object { docker pull "$_" }
+		}
+		buildall{
+			$Systems | ForEach-Object {
+				Write-Host "Building $_" -BackgroundColor White -ForegroundColor Black
+				$dockerFile = $LocalRepository + $_ + ".Dockerfile"
+				$imageName = $Repository + $_ + $Tag
+				Docker-Simple-Build $dockerFile $imageName
+			}
 		}
 		containers {
 			docker ps
@@ -184,16 +192,6 @@ Function Docker-Simple-Build($file, $name) {
 	}
 }
 Set-Alias dockbuild -Value Docker-Simple-Build
-
-# Docker Build All Images
-Function Docker-All-Build() {
-	$Systems | ForEach-Object {
-		$dockerFile = $LocalRepository + $_ + ".Dockerfile"
-		$imageName = $Repository + $_ + $Tag
-		Docker-Simple-Build $dockerFile $imageName
-	}
-}
-Set-Alias dockbuildall -Value Docker-All-Build
 
 # Arguments AutoCompletion for dock
 Register-ArgumentCompleter -CommandName Docker-Simple-Control -ParameterName command -ScriptBlock {
