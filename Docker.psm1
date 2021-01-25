@@ -170,8 +170,8 @@ Function Docker-Simple-Control($command) {
 				omnimir/ssh:latest `
 				/bin/bash -c `
 				"echo 'sshserver:sshserver' | chpasswd; service ssh restart; /bin/bash"
-				#"read -p 'Password: ' password; echo 'sshserver:'${password} | chpasswd; service ssh restart; /bin/bash"
-		}
+				#SSHuser='sshserver:'; read -p 'Password: ' SSHpassword; echo $SSHuser$SSHpassword | chpasswd; service ssh restart;
+	}
 		default {
 			Write-Host "Administration" -BackgroundColor White -ForegroundColor Black
 			Write-Output $Administration

@@ -10,4 +10,3 @@ RUN useradd $USER -m -s /bin/bash -g root && \
 	echo 'PS1="\\[\\033[07;37m\\]ssh@Docker \\w \\$ \\[\\033[00m\\]"' >> /root/.bashrc
 #Setting working directory
 WORKDIR /project
-
