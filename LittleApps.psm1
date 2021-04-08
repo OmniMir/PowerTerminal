@@ -43,7 +43,7 @@ Set-Alias guid -Value Get-New-Generated-GUID
 ##Windows grep Command
 Function Find-As-GREP($target) {
 	#Search string in all files at this location
-	Get-ChildItem -Recurse -Exclude *.zip |
+	Get-ChildItem -Recurse -Exclude *.lnk, *.zip |
 	Select-String -Pattern $target -Context 1, 1 |
 	ForEach-Object {
 		#Set new line
