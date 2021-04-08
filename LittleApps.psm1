@@ -52,6 +52,8 @@ Function Find-As-GREP($target) {
 	Get-ChildItem -Recurse -Exclude *.zip |
 	Select-String -Pattern $target -Context 1, 1 |
 	ForEach-Object {
+		#Set new line
+		Write-Host
 		#Get filename and number of line
 		Write-Host $_.RelativePath($PWD) -ForegroundColor Black -BackgroundColor White -NoNewline
 		Write-Host " " -NoNewline
@@ -62,8 +64,6 @@ Function Find-As-GREP($target) {
 		Write-Host $_.Context.PreContext -ForegroundColor Blue
 		Write-Host ($_.Line -replace $target, "$colorGreen$target$colorDefault")
 		Write-Host $_.Context.PostContext -ForegroundColor Blue
-		#Set new line
-		Write-Host
 	}
 }
 Set-Alias grep -Value Find-As-GREP
