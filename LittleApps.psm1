@@ -23,9 +23,13 @@ Function Find-NotUniqueStrings-InFile($file) {
 	Group-Object -NoElement |
 	Where-Object { $_.Name -NotLike "" -and $_.Count -NotMatch 1 } |
 	Format-Table -Property Name -AutoSize -HideTableHeaders
-	if ($results) { Write-Output $results }
-	else { Write-Output OK }
 	#View results of searching
+	if ($results) {
+		Write-Output $results
+	}
+	else {
+		Write-Output OK
+	}
 }
 Set-Alias uniqs -Value Find-NotUniqueStrings-InFile
 
