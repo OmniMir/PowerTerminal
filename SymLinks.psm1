@@ -4,6 +4,12 @@ Function Create-SymLink($path, $target) {
 }
 Set-Alias symlink -Value Create-SymLink
 
+##Get Full Path of Symbolic Link
+Function Get-Full-Path-of-Symbol-Link($path) {
+	Get-Item $path | Select-Object -ExpandProperty Target
+}
+Set-Alias linkpath -Value Get-Full-Path-of-Symbol-Link
+
 ##Convert Symbolic Link to .lnk-files
 Function Convert-SymLinks-to-LNK($path, $recursive) {
 	#Change directory

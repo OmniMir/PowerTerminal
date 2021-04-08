@@ -33,12 +33,6 @@ Function Find-NotUniqueStrings-InFile($file) {
 }
 Set-Alias uniqs -Value Find-NotUniqueStrings-InFile
 
-##Get Full Path of Symbolic Link
-Function Get-Full-Path-of-Symbol-Link($path) {
-	Get-Item $path | Select-Object -ExpandProperty Target
-}
-Set-Alias linkpath -Value Get-Full-Path-of-Symbol-Link
-
 ##Generate New GUID
 Function Get-New-Generated-GUID() {
 	#Get new random GUID
