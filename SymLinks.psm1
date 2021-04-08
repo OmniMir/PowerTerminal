@@ -1,10 +1,10 @@
-# Create Symbolic Link
+##Create Symbolic Link
 Function Create-SymLink($path, $target) {
 	New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
 Set-Alias symlink -Value Create-SymLink
 
-# Convert Symbolic Link to .lnk-files 
+##Convert Symbolic Link to .lnk-files
 Function Convert-SymLinks-to-LNK($path, $recursive) {
 	#Change directory
 	Set-Location -Path $path
