@@ -5,13 +5,13 @@ Function Get-Basenames-Of-Files-In-Current-Directory {
 }
 Set-Alias names -Value Get-Basenames-Of-Files-In-Current-Directory
 
-	$newDirs = Get-Clipboard -Format Text -TextFormatType Text
-	Write-Output $newDirs
-	New-Item -Path ($newDirs) -ItemType directory -Confirm
 ##New Directories by Names from Clipboard
 Function Write-New-Directories-By-Names-In-Clipboard {
 	#Get names from clipboard
+	$newDirectories = Get-Clipboard -Format Text -TextFormatType Text
+	Write-Output $newDirectories
 	#Write new directories by that names
+	New-Item -Path ($newDirectories) -ItemType directory -Confirm
 }
 Set-Alias newdirs -Value Write-New-Directories-By-Names-In-Clipboard
 
@@ -20,8 +20,8 @@ Function Find-NotUniqueStrings-InFile($file) {
 	#Get identical strings in file
 	$results =
 	Get-Content $file |
-	Group -NoElement |
-	Where { $_.Name -NotLike "" -and $_.Count -NotMatch 1 } |
+	Group-Object -NoElement |
+	Where-Object { $_.Name -NotLike "" -and $_.Count -NotMatch 1 } |
 	Format-Table -Property Name -AutoSize -HideTableHeaders
 	if ($results) { Write-Output $results }
 	else { Write-Output OK }
