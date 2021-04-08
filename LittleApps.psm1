@@ -1,5 +1,6 @@
 Function Basenames-OfFiles-InCurrentDirectory {
 ##All Filenames in Current Directory without Extension
+	#Get only name of file
 	(Get-ChildItem).BaseName
 }
 Set-Alias names -Value Basenames-OfFiles-InCurrentDirectory
@@ -9,11 +10,14 @@ Function NewDirectories-ByNames-InClipboard {
 	Write-Output $newDirs
 	New-Item -Path ($newDirs) -ItemType directory -Confirm
 ##New Directories by Names from Clipboard
+	#Get names from clipboard
+	#Write new directories by that names
 }
 Set-Alias newdirs -Value NewDirectories-ByNames-InClipboard
 
 ##Find Matching String in File
 Function Find-NotUniqueStrings-InFile($file) {
+	#Get identical strings in file
 	$results =
 	Get-Content $file |
 	Group -NoElement |
@@ -21,6 +25,7 @@ Function Find-NotUniqueStrings-InFile($file) {
 	Format-Table -Property Name -AutoSize -HideTableHeaders
 	if ($results) { Write-Output $results }
 	else { Write-Output OK }
+	#View results of searching
 }
 Set-Alias uniqs -Value Find-NotUniqueStrings-InFile
 
@@ -32,6 +37,7 @@ Set-Alias linkpath -Value Get-Full-Path-of-Symbol-Link
 
 Function Generate-New-GUID() {
 ##Generate New GUID
+	#Get new random GUID
 	[guid]::NewGuid().ToString()
 }
 Set-Alias guid -Value Generate-New-GUID
