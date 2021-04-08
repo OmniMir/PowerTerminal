@@ -20,7 +20,7 @@ Remove-Module -Name PSReadline
 # PowerShell Prompt with colors
 $ESC = [char]27
 Function Prompt {
-	"$ESC[30;104m$env:USERNAME@$env:COMPUTERNAME$ESC[30;47m $(Get-Location) $ESC[30;42m$('PS' * ($nestedPromptLevel + 1))$ESC[0m "
+	"$ESC[30;44m$env:USERNAME@$env:COMPUTERNAME$ESC[30;47m $(Get-Location) $ESC[30;42m$('PS' * ($nestedPromptLevel + 1))$ESC[0m "
 }
 
 Set-PSReadLineOption -Colors @{
