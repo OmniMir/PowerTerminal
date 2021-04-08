@@ -30,11 +30,11 @@ Function Get-Hash-Of-File($file, $algorithm, $hash) {
 	}
 	#Comparison with Hash and Result
 	elseif ($hash -ne $filehash) {
-		Write-Host ($hashTitle + $filehash) -BackgroundColor Red
+		Write-Host ($hashTitle + $filehash) -BackgroundColor DarkRed
 	}
 	elseif ($hash -eq $filehash) {
 
-		Write-Host ($hashTitle + $filehash) -BackgroundColor Green
+		Write-Host ($hashTitle + $filehash) -BackgroundColor DarkGreen
 	}
 }
 

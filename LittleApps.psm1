@@ -55,9 +55,9 @@ Function Find-As-GREP($target) {
 		#Get context and colors
 		$colorDefault = "$([char]27)[0m"
 		$colorGreen = "$([char]27)[32m"
-		Write-Host $_.Context.PreContext -ForegroundColor Blue
+		Write-Host $_.Context.PreContext -ForegroundColor DarkGray
 		Write-Host ($_.Line -replace $target, "$colorGreen$target$colorDefault")
-		Write-Host $_.Context.PostContext -ForegroundColor Blue
+		Write-Host $_.Context.PostContext -ForegroundColor DarkGray
 	}
 }
 Set-Alias grep -Value Find-As-GREP
