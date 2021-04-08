@@ -1,19 +1,19 @@
-Function Basenames-OfFiles-InCurrentDirectory {
 ##All Filenames in Current Directory without Extension
+Function Get-Basenames-Of-Files-In-Current-Directory {
 	#Get only name of file
 	(Get-ChildItem).BaseName
 }
-Set-Alias names -Value Basenames-OfFiles-InCurrentDirectory
+Set-Alias names -Value Get-Basenames-Of-Files-In-Current-Directory
 
-Function NewDirectories-ByNames-InClipboard {
 	$newDirs = Get-Clipboard -Format Text -TextFormatType Text
 	Write-Output $newDirs
 	New-Item -Path ($newDirs) -ItemType directory -Confirm
 ##New Directories by Names from Clipboard
+Function Write-New-Directories-By-Names-In-Clipboard {
 	#Get names from clipboard
 	#Write new directories by that names
 }
-Set-Alias newdirs -Value NewDirectories-ByNames-InClipboard
+Set-Alias newdirs -Value Write-New-Directories-By-Names-In-Clipboard
 
 ##Find Matching String in File
 Function Find-NotUniqueStrings-InFile($file) {
@@ -35,12 +35,12 @@ Function Get-Full-Path-of-Symbol-Link($path) {
 }
 Set-Alias linkpath -Value Get-Full-Path-of-Symbol-Link
 
-Function Generate-New-GUID() {
 ##Generate New GUID
+Function Get-New-Generated-GUID() {
 	#Get new random GUID
 	[guid]::NewGuid().ToString()
 }
-Set-Alias guid -Value Generate-New-GUID
+Set-Alias guid -Value Get-New-Generated-GUID
 
 ##Windows grep Command
 Function Find-As-GREP($target) {
