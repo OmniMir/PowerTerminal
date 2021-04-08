@@ -57,8 +57,10 @@ Function Find-As-GREP($target) {
 		Write-Host " " -NoNewline
 		Write-Host $_.LineNumber
 		#Get context and colors
+		$colorDefault = "$([char]27)[0m"
+		$colorGreen = "$([char]27)[32m"
 		Write-Host $_.Context.PreContext -ForegroundColor Blue
-		Write-Host ($_.Line -replace $target, "$([char]27)[32m$target$([char]27)[0m")
+		Write-Host ($_.Line -replace $target, "$colorGreen$target$colorDefault")
 		Write-Host $_.Context.PostContext -ForegroundColor Blue
 		#Set new line
 		Write-Host
