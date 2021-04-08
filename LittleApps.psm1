@@ -49,7 +49,9 @@ Set-Alias guid -Value Get-New-Generated-GUID
 ##Windows grep Command
 Function Find-As-GREP($target) {
 	#Search string in all files at this location
-	Get-ChildItem -Recurse | Select-String -Pattern $target -Context 1, 1 | ForEach-Object {
+	Get-ChildItem -Recurse -Exclude *.zip |
+	Select-String -Pattern $target -Context 1, 1 |
+	ForEach-Object {
 		#Get filename and number of line
 		Write-Host $_.RelativePath($PWD) -ForegroundColor Black -BackgroundColor White -NoNewline
 		Write-Host " " -NoNewline
