@@ -55,6 +55,26 @@ Function Find-As-GREP($target) {
 }
 Set-Alias grep -Value Find-As-GREP
 
+# Interactive-CD
+Function Interactive-Current-Directory($target) {
+	#Set peco and its parameters as array
+	$pecoExecution = 'C:\Program Files\Peco\peco.exe'
+	$pecoArguments = @(
+		'--initial-index=1'
+		'--on-cancel=error'
+		'--prompt=INTERACTIVE-CD ' + $PWD
+		'--selection-prefix=>'
+	)
+	#Get all dirs in current location
+	$directories = Get-ChildItem -Directory -Name
+	if (!$directories) {
+		$directories = "."
+	}
+	$directories = Write-Output ".." && $directories
+	#Start with ' | & ' because Start-Process is NOT WORKING with pipelines
+	Set-Location -Path ($directories | & $pecoExecution $pecoArguments)
+}
+Set-Alias cdi -Value Interactive-Current-Directory
 
 # NeoFetch for Windows
 Set-Alias version -Value "C:\Program Files\WinFetch\winfetch.exe"
