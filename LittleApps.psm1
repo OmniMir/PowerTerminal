@@ -37,6 +37,23 @@ Function Generate-New-GUID() {
 }
 Set-Alias guid -Value Generate-New-GUID
 
+# Windows grep Command
+Function Find-As-GREP($target) {
+	#Search string in all files at this location
+	Get-ChildItem -Recurse | Select-String -Pattern $target -Context 1, 1 | ForEach-Object {
+		#Get filename and number of line
+		Write-Host $_.RelativePath($PWD) -ForegroundColor Black -BackgroundColor White -NoNewline
+		Write-Host " " -NoNewline
+		Write-Host $_.LineNumber
+		#Get context and colors
+		Write-Host $_.Context.PreContext -ForegroundColor Blue
+		Write-Host ($_.Line -replace $target, "$([char]27)[32m$target$([char]27)[0m")
+		Write-Host $_.Context.PostContext -ForegroundColor Blue
+		#Set new line
+		Write-Host
+	}
+}
+Set-Alias grep -Value Find-As-GREP
 
 
 # NeoFetch for Windows
