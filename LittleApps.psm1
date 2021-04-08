@@ -37,11 +37,21 @@ Function Generate-New-GUID() {
 }
 Set-Alias guid -Value Generate-New-GUID
 
-# Windows grep command via RipGrep
-Function Searh-As-GREP-Via-RipGREP($target) {
-	Start-Process -FilePath "C:\Program Files\RipGrep\rg.exe" -ArgumentList "$target -N -S --sort path" -NoNewWindow -Wait
+# Windows grep Command via RipGrep
+Function Search-As-GREP-Via-RipGREP($target, $sort) {
+	#Two words search with space as regular expression
+	if ($target) {
+		$target = $target.Replace(" ", "\s")
+	}
+	#Set sorting option
+	$sort = "none"  #Faster
+	if ($sort -eq "--path") {
+		$sort = "path"  #Order
+	}
+	#Start searching
+	Start-Process -FilePath "C:\Program Files\RipGrep\rg.exe" -ArgumentList "$target -N -S --sort $sort" -NoNewWindow -Wait
 }
-Set-Alias grep -Value Searh-As-GREP-Via-RipGREP
+Set-Alias grep -Value Search-As-GREP-Via-RipGREP
 
 
 # NeoFetch for Windows
