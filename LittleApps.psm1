@@ -77,7 +77,7 @@ Function Interactive-Current-Directory($target) {
 	if (!$directories) {
 		$directories = "."
 	}
-	$directories = Write-Output ".." && $directories
+	$directories = "..", $directories
 	#Start with ' | & ' because Start-Process is NOT WORKING with pipelines
 	Set-Location -Path ($directories | & $pecoExecution $pecoArguments)
 }
