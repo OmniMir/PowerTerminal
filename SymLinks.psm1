@@ -1,8 +1,8 @@
 ##Create Symbolic Link
-Function Create-SymLink($path, $target) {
+Function Write-SymLink($path, $target) {
 	New-Item -ItemType SymbolicLink -Path $path -Target $target
 }
-Set-Alias symlink -Value Create-SymLink
+Set-Alias symlink -Value Write-SymLink
 
 ##Get Full Path of Symbolic Link
 Function Get-Full-Path-of-Symbol-Link($path) {
