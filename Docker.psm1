@@ -52,7 +52,7 @@ Function Start-Docker-Simple-Control($command) {
 		update {
 			docker images --format "{{.Repository}}:{{.Tag}}" | ForEach-Object { docker pull "$_" }
 		}
-		buildall{
+		buildall {
 			$Systems | ForEach-Object {
 				Write-Host "Building $_" -BackgroundColor White -ForegroundColor Black
 				$dockerFile = $LocalRepository + $_ + ".Dockerfile"
@@ -171,7 +171,7 @@ Function Start-Docker-Simple-Control($command) {
 				/bin/bash -c `
 				"echo 'sshserver:sshserver' | chpasswd; service ssh restart; /bin/bash"
 				#SSHuser='sshserver:'; read -p 'Password: ' SSHpassword; echo $SSHuser$SSHpassword | chpasswd; service ssh restart;
-	}
+		}
 		default {
 			Write-Host "Administration" -BackgroundColor White -ForegroundColor Black
 			Write-Output $Administration

@@ -56,6 +56,7 @@ Function Start-Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 		$arguments = "-F " + $authentication + $link
 		Start-Process -FilePath $ytdl -ArgumentList $arguments -NoNewWindow -Wait
 	}
+
 	#Show Help without arguments
 	else {
 		Write-Output "For view all variants: 'youtube https://yourlink.to/video'"
@@ -69,6 +70,7 @@ Function Start-Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 		Write-Output "For view all variants with Authentication: 'youtube https://yourlink.to/video formats login password'"
 		Write-Output "For download variant (video+audio) with Authentication: 'youtube https://yourlink.to/video 137+22 login password'"
 	}
+
 	#Set Default Title
 	$host.UI.RawUI.WindowTitle = "PowerShell"
 }
