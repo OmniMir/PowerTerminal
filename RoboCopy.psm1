@@ -1,15 +1,15 @@
-# RoboCopy Syntax
-# https://docs.microsoft.com/ru-ru/windows-server/administration/windows-commands/robocopy
+#RoboCopy Syntax
+#https://docs.microsoft.com/ru-ru/windows-server/administration/windows-commands/robocopy
 
-# Copying all folders and files
+##Copying All Folders and Files
 Function Start-RoboCopy-All-Files($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
-		#Copy Options 
-		##subdirectories with Empty directories
-		##files with Data,Attributes,Timestamps
-		##directories with Data,Attributes,Timestamps
-		##create copies of Symbolic Links
-		##only 100 Retries
+		#Copy Parmeters
+		#subdirectories with Empty directories
+		#files with Data,Attributes,Timestamps
+		#directories with Data,Attributes,Timestamps
+		#create copies of Symbolic Links
+		#only 100 Retries
 		$options = "/E /COPY:DAT /DCOPY:DAT /SL /R:100"
 		#Copy Process
 		Invoke-Expression "robocopy '$oldDirectory' '$newDirectory' $options"
@@ -20,7 +20,7 @@ Function Start-RoboCopy-All-Files($oldDirectory, $newDirectory) {
 }
 Set-Alias copyall -Value Start-RoboCopy-All-Files
 
-# Create tree of files with zero length
+##Create Tree of Files with Zero Length
 Function Start-RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
 		robocopy `
@@ -38,7 +38,7 @@ Function Start-RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 }
 Set-Alias copytree -Value Start-RoboCopy-Zero-Tree
 
-# Very simple diff of file trees
+##Very Simple Diff of File Trees
 Function Compare-Difference-Of-Trees($oldDirectory, $newDirectory, $diff) {
 	if ($oldDirectory -and $newDirectory -and $diff) {
 		$treeold = tree $oldDirectory

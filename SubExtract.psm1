@@ -1,4 +1,4 @@
-# Dowload video from YouTube or other video-hostings with youtube-dl+ffmpeg
+##Extract Subtitles from Video File
 Function Export-Subtitles-From-Video ($file, $format) {
 	$ffFolder = "C:\Program Files\YouTube-DL\"
 	$ffmpegExe = "ffmpeg"

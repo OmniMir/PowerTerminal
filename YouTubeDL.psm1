@@ -1,22 +1,23 @@
-# Dowload video from YouTube or other video-hostings with youtube-dl+ffmpeg
+##Dowload Video from YouTube or Other Video-Hostings with youtube-dl+ffmpeg
 Function Start-Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 	#Set YouTube-DL
 	$ytdlFolder = "C:\Program Files\YouTube-DL\"
 	$ytdlExe = "youtube-dl.exe"
 	$ytdl = $ytdlFolder + $ytdlExe
-	#Set download
+	#Set download directory
 	$downloadFolder = $HOME + "\Desktop\Download\"
 	$downloadFile = "%(title)s__%(resolution)s.%(ext)s"
 	$dl = $downloadFolder + $downloadFile
-	#Set Authentication
+	#Set authentication
 	$authentication = ""
 	if ($user) {
 		$authentication = "--username " + $user + " --password " + $password + " "
 	}
- 
-	#Script in Work
+
 	#Set YouTube-DL Title
 	$host.UI.RawUI.WindowTitle = "YouTube-DL"
+
+	#Script in Work
 	if ($link -and $format) {
 		#Download 1080p Video from YouTube
 		if ($format -eq "1080") {
