@@ -2,7 +2,7 @@
 # https://docs.microsoft.com/ru-ru/windows-server/administration/windows-commands/robocopy
 
 # Copying all folders and files
-Function RoboCopy-All-Files($oldDirectory, $newDirectory) {
+Function Start-RoboCopy-All-Files($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
 		#Copy Options 
 		##subdirectories with Empty directories
@@ -18,10 +18,10 @@ Function RoboCopy-All-Files($oldDirectory, $newDirectory) {
 		Write-Output "copyall path/to/old/dir path/to/new/dir"
 	}
 }
-Set-Alias copyall -Value RoboCopy-All-Files
+Set-Alias copyall -Value Start-RoboCopy-All-Files
 
 # Create tree of files with zero length
-Function RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
+Function Start-RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 	if ($oldDirectory -and $newDirectory) {
 		robocopy `
 			$oldDirectory `
@@ -36,7 +36,7 @@ Function RoboCopy-Zero-Tree($oldDirectory, $newDirectory) {
 		Write-Output "copytree path/to/old/dir path/to/new/dir"
 	}
 }
-Set-Alias copytree -Value RoboCopy-Zero-Tree
+Set-Alias copytree -Value Start-RoboCopy-Zero-Tree
 
 # Very simple diff of file trees
 Function Compare-Difference-Of-Trees($oldDirectory, $newDirectory, $diff) {

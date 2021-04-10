@@ -1,5 +1,5 @@
 # Dowload video from YouTube or other video-hostings with youtube-dl+ffmpeg
-Function Extract-Subtitles-From-Video ($file, $format) {
+Function Export-Subtitles-From-Video ($file, $format) {
 	$ffFolder = "C:\Program Files\YouTube-DL\"
 	$ffmpegExe = "ffmpeg"
 	$ffprobeExe = "ffmpeg"
@@ -11,5 +11,5 @@ Function Extract-Subtitles-From-Video ($file, $format) {
 	$streams = $streams -replace "TAG:"
 	echo $streams
 }
+Set-Alias extract -Value Export-Subtitles-From-Video
 
-Set-Alias extract -Value Extract-Subtitles-From-Video

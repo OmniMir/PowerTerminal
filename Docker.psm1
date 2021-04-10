@@ -6,7 +6,7 @@ $Repository = "omnimir/"
 $Tag = ":latest"
 
 # Docker Control
-Function Docker-Simple-Control($command) {
+Function Start-Docker-Simple-Control($command) {
 	$host.UI.RawUI.WindowTitle = "$command | ${pwd}"
 	Switch ($command) {
 		#Administration
@@ -57,7 +57,7 @@ Function Docker-Simple-Control($command) {
 				Write-Host "Building $_" -BackgroundColor White -ForegroundColor Black
 				$dockerFile = $LocalRepository + $_ + ".Dockerfile"
 				$imageName = $Repository + $_ + $Tag
-				Docker-Simple-Build $dockerFile $imageName
+				Start-Docker-Simple-Build $dockerFile $imageName
 			}
 		}
 		containers {
@@ -181,10 +181,10 @@ Function Docker-Simple-Control($command) {
 	}
 	$host.UI.RawUI.WindowTitle = "PowerShell"
 }
-Set-Alias dock -Value Docker-Simple-Control
+Set-Alias dock -Value Start-Docker-Simple-Control
 
 # Docker Build Image
-Function Docker-Simple-Build($file, $name) {
+Function Start-Docker-Simple-Build($file, $name) {
 	if ($file -and $name) {
 		docker build -f $file -t $name .
 		docker push $name
@@ -193,10 +193,10 @@ Function Docker-Simple-Build($file, $name) {
 		Write-Output 'dockbuild path/to/Dockerfile "repository/name:tag"'
 	}
 }
-Set-Alias dockbuild -Value Docker-Simple-Build
+Set-Alias dockbuild -Value Start-Docker-Simple-Build
 
 # Arguments AutoCompletion for dock
-Register-ArgumentCompleter -CommandName Docker-Simple-Control -ParameterName command -ScriptBlock {
+Register-ArgumentCompleter -CommandName Start-Docker-Simple-Control -ParameterName command -ScriptBlock {
 	param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
 	$Arguments = $Administration + $Systems
@@ -207,7 +207,7 @@ Register-ArgumentCompleter -CommandName Docker-Simple-Control -ParameterName com
 	}
 }
 # Arguments AutoCompletion for dockbuild
-Register-ArgumentCompleter -CommandName Docker-Simple-Build -ParameterName name -ScriptBlock {
+Register-ArgumentCompleter -CommandName Start-Docker-Simple-Build -ParameterName name -ScriptBlock {
 	param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameters)
 
 	$Arguments = $Systems | ForEach-Object { $Repository + $_ + $Tag }

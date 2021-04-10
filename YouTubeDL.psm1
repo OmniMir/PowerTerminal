@@ -1,5 +1,5 @@
 # Dowload video from YouTube or other video-hostings with youtube-dl+ffmpeg
-Function Dowload-Video-From-YouTube ($link, $format, $user, $password) {
+Function Start-Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 	#Set YouTube-DL
 	$ytdlFolder = "C:\Program Files\YouTube-DL\"
 	$ytdlExe = "youtube-dl.exe"
@@ -71,4 +71,4 @@ Function Dowload-Video-From-YouTube ($link, $format, $user, $password) {
 	#Set Default Title
 	$host.UI.RawUI.WindowTitle = "PowerShell"
 }
-Set-Alias youtube -Value Dowload-Video-From-YouTube
+Set-Alias youtube -Value Start-Dowload-Video-From-YouTube
