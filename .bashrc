@@ -86,11 +86,11 @@ alias weather='curl ru.wttr.in/Moscow?0QT'
 
 ##PS1 PROMPT
 #Desktop Style "kapsilon@K0 /home $" with colors
-PSdesktop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[01;07;34m\]\u@\h\[\033[00m\]\[\033[07;37m\] \w \[\033[00m\]\[\033[01;07;32m\]\$\[\033[00m\] '
+PSdesktop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[34;07m\]\u@\h\[\033[00m\]\[\033[37;07m\] \w \[\033[00m\]\[\033[32;07m\]\$\[\033[00m\] '
 #Laptop Style "kapsilon@K0 /home 90% $" with colors and Battery status
-PSlaptop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[01;07;34m\]\u@\h\[\033[00m\]\[\033[07;37m\] \w \[\033[00m\]\[\033[01;07;32m\]\$\[\033[00m\]\[\033[07;31m\][$(cat /sys/class/power_supply/BAT0/capacity)%]\[\033[00m\] '
+PSlaptop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[34;07m\]\u@\h\[\033[00m\]\[\033[37;07m\] \w \[\033[00m\]\[\033[32;07m\]\$\[\033[00m\]\[\033[31;07m\][$(cat /sys/class/power_supply/BAT0/capacity)%]\[\033[00m\] '
 #Minimal Style "kapsilon@K0 /home 90% $" with colors for Android Termux
-PSminimal='\[\033[07;37m\] \w \[\033[00m\]\[\033[01;07;92m\]\$\[\033[00m\] '
+PSminimal='\[\033[07;37m\] \w \[\033[00m\]\[\033[0;07;92m\]\$\[\033[00m\] '
 
 if [[ "$HOSTNAME" == "K0" ]]; then
 	export PS1=$PSdesktop
@@ -111,7 +111,3 @@ elif [[ "$HOSTNAME" == "localhost" ]]; then
 	alias sudo=' '
 else export PS1= '\u@\h  \w $ '
 fi
-
-#----------------------------------------------------
-#PS1 for Ubuntu on Windows (other colors)
-#export PS1='${debian_chroot:+($debian_chroot)}\[\033[01;07;94m\]\u@\h\[\033[00m\]\[\033[07;37m\] \w \[\033[00m\]\[\033[01;07;92m\]\$\[\033[00m\] '
