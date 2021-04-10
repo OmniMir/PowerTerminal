@@ -6,10 +6,10 @@ Function Export-Subtitles-From-Video ($file, $format) {
 	$ffm = $ffFolder + $ffmpegExe
 	$ffp = $ffFolder + $ffprobeExe
 
-	$streams = $ffp -i $file -show_streams -loglevel error
+	$streams = "$ffp -i $file -show_streams -loglevel error"
 	$streams = Select-String $streams -Pattern "codec_long", "index", "language"
 	$streams = $streams -replace "TAG:"
-	echo $streams
+	Write-Output $streams
 }
 Set-Alias extract -Value Export-Subtitles-From-Video
 
