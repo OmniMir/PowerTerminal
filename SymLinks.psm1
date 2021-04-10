@@ -10,17 +10,22 @@ Function Get-Full-Path-of-Symbol-Link($path) {
 }
 Set-Alias linkpath -Value Get-Full-Path-of-Symbol-Link
 
-##Convert Symbolic Link to .lnk-files
-Function Convert-SymLinks-to-LNK($path, $recursive) {
+##Convert Symbolic Links to .lnk-files
+Function Convert-SymLinks-to-LNKs($recurse, $path) {
 	#Change directory
-	Set-Location -Path $path
+	if ($path) {
+		$path = "-Path $path"
+	} else {
+		$path = ""
+	}
 	#Recursive Mode On
-	$recurse = ""
-	if ($recursive -eq "Recursive") {
+	if ($recurse -eq "-r") {
 		$recurse = "-Recurse"
+	} else {
+		$recurse = ""
 	}
 	#Finding all SymLinks in Directory and Subdirectories
-	Get-ChildItem $recurse -Attributes ReparsePoint | ForEach-Object -Process {
+	Get-ChildItem -Attributes ReparsePoint $path $recurse | ForEach-Object -Process {
 		#Getting Path and Target
 		$path = $_.FullName
 		$target = [string]$_.Target #Convert to string IMPORTANT
