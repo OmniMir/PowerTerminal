@@ -101,12 +101,19 @@ alias updots_required='sudo apt install caca-utils cloc endlessh inxi neofetch p
 alias weather='curl ru.wttr.in/Moscow?0QT'
 
 ##PS1 PROMPT
+#Terminal Title & Chroot
+PStitle="\[\e]0;\h\a\]"
+PSchroot="${debian_chroot:+($debian_chroot)}"
 #Desktop Style "kapsilon@K0 /home $" with colors
-PSdesktop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[34;07m\]\u@\h\[\033[00m\]\[\033[37;07m\] \w \[\033[00m\]\[\033[32;07m\]\$\[\033[00m\] '
+PSuser="\[\033[34;07m\]\u@\h\[\033[00m\]"
+PSpath="\[\033[37;07m\] \w \[\033[00m\]"
+PSsymbol="\[\033[32;07m\]\$\[\033[00m\] "
+PSdesktop="$PStitle$PSchroot$PSuser$PSpath$PSsymbol"
 #Laptop Style "kapsilon@K0 /home 90% $" with colors and Battery status
-PSlaptop='\[\e]0;\h\a\]${debian_chroot:+($debian_chroot)}\[\033[34;07m\]\u@\h\[\033[00m\]\[\033[37;07m\] \w \[\033[00m\]\[\033[32;07m\]\$\[\033[00m\]\[\033[31;07m\][$(cat /sys/class/power_supply/BAT0/capacity)%]\[\033[00m\] '
+PSbattery="\[\033[31;07m\][$(cat /sys/class/power_supply/BAT0/capacity 2>/dev/null)%]\[\033[00m\]"
+PSlaptop="$PStitle$PSchroot$PSuser$PSbattery$PSpath$PSsymbol"
 #Minimal Style "kapsilon@K0 /home 90% $" with colors for Android Termux
-PSminimal='\[\033[07;37m\] \w \[\033[00m\]\[\033[0;07;92m\]\$\[\033[00m\] '
+PSminimal="$PSpath$PSsymbol"
 
 if [[ "$HOSTNAME" == "K0" ]]; then
 	export PS1=$PSdesktop
