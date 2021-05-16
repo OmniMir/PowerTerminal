@@ -64,6 +64,13 @@ alias pdi='cd `
 		  (read result; echo "${result/\~/$HOME}")
 		  `'
 
+#Get Certificate and Fingerprint of Site
+sitecert() {
+	echo "q" |
+	openssl s_client -connect "$1":443 |
+	openssl x509 -startdate -enddate -fingerprint;
+}
+
 #Everything will UPdate, UPgrade and remove AWAY + SNAP if snap is here
 alias upupaway='echo -e "\033[7mapt update\033[0m"; sudo apt update &&
 				echo -e "\033[7mapt upgrade\033[0m"; sudo apt upgrade --yes &&
