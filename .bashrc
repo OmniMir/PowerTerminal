@@ -52,17 +52,23 @@ export TERM='xterm-256color'
 
 ##LITTLE APPLICATIONS (Required peco)
 #Simple Interactive CD (required peco)
-alias cdi='cd `
-		  (echo ".." && ls -A --color=never --group-directories-first -p) |
-		  (peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-CD: $PWD" --selection-prefix=">" || echo ".")
-		  `'
+cdi() {
+	cd "$(
+		(echo ".." && ls -A --color=never --group-directories-first -p) |
+		(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-CD: $PWD" --selection-prefix=">" || echo ".")
+	)" ||
+	return
+}
 
 #Simple Interactive PushD, use with "pd" (required peco)
-alias pdi='cd `
-		  (dirs -p | tail -n +2) |
-		  (peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-PD: $PWD" --selection-prefix=">" || echo ".") |
-		  (read result; echo "${result/\~/$HOME}")
-		  `'
+pdi() {
+	cd "$(
+		(dirs -p | tail -n +2) |
+		(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-PD: $PWD" --selection-prefix=">" || echo ".") |
+		(read -r result; echo "${result/\~/$HOME}")
+	)" ||
+	return
+}
 
 #Get Certificate and Fingerprint of Site
 sitecert() {
@@ -72,20 +78,22 @@ sitecert() {
 }
 
 #Everything will UPdate, UPgrade and remove AWAY + SNAP if snap is here
-alias upupaway='echo -e "\033[7mapt update\033[0m"; sudo apt update &&
-				echo -e "\033[7mapt upgrade\033[0m"; sudo apt upgrade --yes &&
-				echo -e "\033[7mapt autoremove\033[0m"; sudo apt autoremove --yes &&
-				if (dpkg -l | grep "ii  snapd") > /dev/null; then
-				(echo -e "\033[7msnap refresh\033[0m"; sudo snap refresh &&
-					sudo snap set system refresh.hold=$(date --date="today+30 days" --iso-8601=seconds);)
-				fi
-				'
+upupaway() {
+	(echo -e "\033[7mapt update\033[0m"; sudo apt update) &&
+	(echo -e "\033[7mapt upgrade\033[0m"; sudo apt upgrade --yes) &&
+	(echo -e "\033[7mapt autoremove\033[0m"; sudo apt autoremove --yes) &&
+	if (dpkg -l | grep "ii  snapd") > /dev/null; then
+		(echo -e "\033[7msnap refresh\033[0m"; sudo snap refresh &&
+		sudo snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)";)
+	fi
+}
 
 #Update dot-files from github or other places
-DOTFILESHOSTSERVER="https://raw.githubusercontent.com/OmniMir/PowerTerminal/dev"
-alias updots='wget "$DOTFILESHOSTSERVER/.bashrc" -O $HOME/.bashrc -q && echo ".bashrc updated";
-			  wget "$DOTFILESHOSTSERVER/.nanorc" -O $HOME/.nanorc -q && echo ".nanorc updated"
-			  '
+updots() {
+	HOSTSERVER="https://raw.githubusercontent.com/OmniMir/PowerTerminal/dev";
+	wget "$HOSTSERVER/.bashrc" -O "$HOME"/.bashrc -q && echo ".bashrc updated";
+	wget "$HOSTSERVER/.nanorc" -O "$HOME"/.nanorc -q && echo ".nanorc updated";
+}
 #Install Required Software
 alias updots_required='sudo apt install caca-utils cloc endlessh inxi neofetch peco'
 
