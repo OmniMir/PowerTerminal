@@ -33,6 +33,7 @@ alias diskspace='df -h --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias grep='grep --color --ignore-case --line-number'
 alias goodbye='sudo shutdown -h now' #shutdown
 alias hardware='inxi -Fo'
+alias historydel='history -r' #delete bash commands from current session
 alias image='cacaview' #image in terminal
 alias ls='ls --color --group-directories-first -p'
 alias lsa='ls --color --group-directories-first -p -A'
