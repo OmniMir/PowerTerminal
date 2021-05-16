@@ -132,5 +132,6 @@ elif [[ "$HOSTNAME" == "localhost" ]]; then
 	export PS1=$PSminimal
 	#Always SUDO without SUDO
 	alias sudo=' '
-else export PS1= '\u@\h  \w $ '
+else
+	export PS1='\u@\h  \w $ '
 fi
