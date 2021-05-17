@@ -8,7 +8,7 @@ Set-Alias names -Value Get-Basenames-Of-Files-In-Current-Directory
 ##New Directories by Names from Clipboard
 Function Write-New-Directories-By-Names-In-Clipboard {
 	#Get names from clipboard
-	$newDirectories = Get-Clipboard -Format Text -TextFormatType Text
+	$newDirectories = Get-Clipboard
 	Write-Output $newDirectories
 	#Write new directories by that names
 	New-Item -Path ($newDirectories) -ItemType directory -Confirm
