@@ -17,9 +17,6 @@ Copy-Item ($PSScriptRoot + "\Terminal.jsonc") -Destination "${home}\AppData\Loca
 # Fix for Bug witn Encoding in Interactive-CD
 [Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8
 
-# Fix for Bug with Big letters
-Remove-Module -Name PSReadline
-
 # PowerShell Prompt with colors
 $ESC = [char]27
 Function Prompt {
