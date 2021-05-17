@@ -83,6 +83,14 @@ Function Start-Interactive-Current-Directory($target) {
 }
 Set-Alias cdi -Value Start-Interactive-Current-Directory
 
+##No MarkDown Double New Lines
+Set-Alias mded -Value "C:\Program Files\AutoGo\MarkDowned.exe"
+##No MarkDown Double New Lines in All Files
+Function MarkDownedAll($path) {
+	$markDownedExecution = 'C:\Program Files\AutoGo\MarkDowned.exe'
+	Get-ChildItem *.md | ForEach-Object {& $markDownedExecution $_.Name}
+}
+
 ##NeoFetch for Windows
 Set-Alias version -Value "C:\Program Files\WinFetch\winfetch.exe"
 
