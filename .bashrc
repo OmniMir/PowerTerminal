@@ -78,15 +78,17 @@ sitecert() {
 }
 
 #Everything will UPdate, UPgrade and remove AWAY + SNAP if snap is here
-upupaway() {
-	(echo -e "\033[7mapt update\033[0m"; sudo apt update) &&
-	(echo -e "\033[7mapt upgrade\033[0m"; sudo apt upgrade --yes) &&
-	(echo -e "\033[7mapt autoremove\033[0m"; sudo apt autoremove --yes) &&
+upupaway_function() {
+	(echo -e "\033[7mapt update\033[0m"; apt update) &&
+	(echo -e "\033[7mapt upgrade\033[0m"; apt upgrade --yes) &&
+	(echo -e "\033[7mapt autoremove\033[0m"; apt autoremove --yes) &&
 	if (dpkg -l | grep "ii  snapd") > /dev/null; then
-		(echo -e "\033[7msnap refresh\033[0m"; sudo snap refresh &&
-		sudo snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)";)
+		(echo -e "\033[7msnap refresh\033[0m"; snap refresh &&
+		snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)";)
 	fi
 }
+
+alias upupaway='sudo bash -c "$(declare -f upupaway_function); upupaway_function"'
 
 #Update dot-files from github or other places
 updots() {
