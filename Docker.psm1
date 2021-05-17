@@ -1,7 +1,7 @@
 # Constants
 $Administration = "start", "update", "buildall", "containers", "images", "rm-containers", "rm-images"
 $LocalRepository = "D:\Project8\PowerTerminal\"
-$Systems = "cpp", "drives", "git", "go", "http", "node", "pandoc", "php", "python", "ssh"
+$Systems = "cpp", "drives", "git", "go", "http", "node", "pandoc", "php", "python", "ssh", "syncthing"
 $Repository = "omnimir/"
 $Tag = ":latest"
 
@@ -43,6 +43,7 @@ Function Start-Docker-Simple-Control($command) {
 			docker pull omnimir/php
 			docker pull omnimir/python
 			docker pull omnimir/ssh
+			docker pull omnimir/syncthing
 			#docker pull onlyoffice/documentserver
 			#docker pull romancin/ptokax (dc++)
 			#docker pull tensorflow/tensorflow
@@ -171,6 +172,17 @@ Function Start-Docker-Simple-Control($command) {
 				/bin/bash -c `
 				"echo 'sshserver:sshserver' | chpasswd; service ssh restart; /bin/bash"
 				#SSHuser='sshserver:'; read -p 'Password: ' SSHpassword; echo $SSHuser$SSHpassword | chpasswd; service ssh restart;
+		}
+		syncthing {
+			docker run -it --rm `
+				--name syncthing `
+				-p 8385:8384 `
+				-p 22001:22000/tcp `
+				-p 22001:22000/udp  `
+				-v ${home}/_SYNCPATH:/var/syncthing `
+				-v ${pwd}:/project `
+				-w /project `
+				omnimir/syncthing:latest
 		}
 		default {
 			Write-Host "Administration" -BackgroundColor White -ForegroundColor Black
