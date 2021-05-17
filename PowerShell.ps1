@@ -32,6 +32,8 @@ Set-PSReadLineOption -Colors @{
 	Variable  = 'DarkGreen'
 }
 
+# Starting Directory
+Set-Location /
+
 # All Clear
 Clear-Host
-Set-Location /
