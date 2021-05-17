@@ -53,21 +53,21 @@
 			{
 				"name": "SSH K2",
 				"guid": "{1550d0c4-41cc-4bb1-8f35-07c7f23d1291}",
-				"commandline": "powershell.exe -NoExit -Command \"ssh K2\"",
+				"commandline": "pwsh.exe -NoExit -Command \"ssh K2\"",
 				"startingDirectory": "%USERPROFILE%",
 				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
 			},
 			{
 				"name": "SSH Knb",
 				"guid": "{8d204de7-04e2-4245-8ef9-4233e4902549}",
-				"commandline": "powershell.exe -NoExit -Command \"ssh Knb\"",
+				"commandline": "pwsh.exe -NoExit -Command \"ssh Knb\"",
 				"startingDirectory": "%USERPROFILE%",
 				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
 			},
 			{
 				"name": "SSH Kpi",
 				"guid": "{c31035ba-4793-4c3b-9f1b-14dffc7ed5af}",
-				"commandline": "powershell.exe -NoExit -Command \"ssh Kpi\"",
+				"commandline": "pwsh.exe -NoExit -Command \"ssh Kpi\"",
 				"startingDirectory": "%USERPROFILE%",
 				"icon": "ms-appx:///ProfileIcons/{574e775e-4f2a-5b96-ac1e-a2962a402336}.png"
 			},
