@@ -49,7 +49,7 @@ export EDITOR='nano -NSmu$'
 export VISUAL='nano -Svm$'
 export TERM='xterm-256color'
 
-##LITTLE APPLICATIONS (Required peco)
+##LITTLE APPLICATIONS
 #Simple Interactive CD (required peco)
 cdi() {
 	cd "$(
@@ -87,7 +87,6 @@ upupaway_function() {
 		snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)";)
 	fi
 }
-
 alias upupaway='sudo bash -c "$(declare -f upupaway_function); upupaway_function"'
 
 #Update dot-files from github or other places
@@ -99,7 +98,7 @@ updots() {
 #Install Required Software
 alias updots_required='sudo apt install caca-utils cloc endlessh inxi neofetch peco'
 
-#Weather in terminal for you (Moscow, Russia)
+#Weather in Terminal for You (Moscow, Russia)
 alias weather='curl ru.wttr.in/Moscow?0QT'
 
 ##PS1 PROMPT
