@@ -39,7 +39,6 @@ alias ls='ls --color --group-directories-first -p'
 alias lsa='ls --color --group-directories-first -p -A'
 alias lsl='ls --color --group-directories-first -p -A -lh --time-style=iso'
 alias mkdir='mkdir -p'
-alias pd='pushd . 1>/dev/null' #use with "pdi"
 alias rm='rm -iv'
 alias rmdir='rm -iRv'
 alias sshtarpit='sudo nohup endlessh -p 22'
@@ -60,7 +59,8 @@ cdi() {
 	return
 }
 
-#Simple Interactive PushD, use with "pd" (required peco)
+#Simple Interactive PushD (required peco)
+alias pd='pushd . 1>/dev/null'
 pdi() {
 	cd "$(
 		(dirs -p | tail -n +2) |
