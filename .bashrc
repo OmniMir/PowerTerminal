@@ -38,6 +38,7 @@ alias image='cacaview' #image in terminal
 alias ls='ls --color --group-directories-first -p'
 alias lsa='ls --color --group-directories-first -p -A'
 alias lsl='ls --color --group-directories-first -p -A -lh --time-style=iso'
+alias historybest='history | awk '{print $2}' | sort | uniq -c | sort -rn | head -n 25' #show 25 most use bash commands
 alias mkdir='mkdir -p'
 alias rm='rm -iv'
 alias rmdir='rm -iRv'
