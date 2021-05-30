@@ -54,8 +54,8 @@ export TERM='xterm-256color'
 #Simple Interactive CD (required peco)
 cdi() {
 	cd "$(
-		(echo ".." && ls -A --color=never --group-directories-first -p) |
 		(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-CD: $PWD" --selection-prefix=">" || echo ".")
+		(echo ".." && (ls --color=never -p -A | \grep '/')) |
 	)" ||
 	return
 }
