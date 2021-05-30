@@ -31,14 +31,14 @@ alias edit='nano -NSmu$'
 alias dirspace='du -h --max-depth=1'
 alias diskspace='df -h --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias grep='grep --color --ignore-case --line-number'
-alias goodbye='sudo shutdown -h now' #shutdown
-alias hardware='inxi -Fo'
-alias historydel='history -r' #delete bash commands from current session
-alias image='cacaview' #image in terminal
-alias ls='ls --color --group-directories-first -p'
-alias lsa='ls --color --group-directories-first -p -A'
-alias lsl='ls --color --group-directories-first -p -A -lh --time-style=iso'
+alias goodbye='sudo shutdown -h now'                                                    #shutdown
+alias hardware='inxi -Fo'                                                               #view hardware information
 alias historybest='history | awk '{print $2}' | sort | uniq -c | sort -rn | head -n 25' #show 25 most use bash commands
+alias historydel='history -r'                                                           #delete bash commands from current session
+alias image='cacaview'                                                                  #image in terminal
+alias ls='ls --color --group-directories-first -p -1'                                   #show files&dirs in current directory
+alias lsa='ls -A'                                                                       #show all files&dirs in current directory
+alias lsl='lsa -lh --time-style=iso'                                                    #show all files&dirs in current directory with long format
 alias mkdir='mkdir -p'
 alias rm='rm -iv'
 alias rmdir='rm -iRv'
@@ -54,10 +54,10 @@ export TERM='xterm-256color'
 #Simple Interactive CD (required peco)
 cdi() {
 	cd "$(
-		(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-CD: $PWD" --selection-prefix=">" || echo ".")
 		(echo ".." && (ls --color=never -p -A | \grep '/')) |
+			(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-CD: $PWD" --selection-prefix=">" || echo ".")
 	)" ||
-	return
+		return
 }
 
 #Simple Interactive PushD (required peco)
@@ -65,36 +65,51 @@ alias pd='pushd . 1>/dev/null'
 pdi() {
 	cd "$(
 		(dirs -p | tail -n +2) |
-		(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-PD: $PWD" --selection-prefix=">" || echo ".") |
-		(read -r result; echo "${result/\~/$HOME}")
+			(peco --initial-index=1 --on-cancel=error --prompt="INTERACTIVE-PD: $PWD" --selection-prefix=">" || echo ".") |
+			(
+				read -r result
+				echo "${result/\~/$HOME}"
+			)
 	)" ||
-	return
+		return
 }
 
 #Get Certificate and Fingerprint of Site
 sitecert() {
 	echo "q" |
-	openssl s_client -connect "$1":443 |
-	openssl x509 -startdate -enddate -fingerprint;
+		openssl s_client -connect "$1":443 |
+		openssl x509 -startdate -enddate -fingerprint
 }
 
 #Everything will UPdate, UPgrade and remove AWAY + SNAP if snap is here
 upupaway_function() {
-	(echo -e "\033[7mapt update\033[0m"; apt update) &&
-	(echo -e "\033[7mapt upgrade\033[0m"; apt upgrade --yes) &&
-	(echo -e "\033[7mapt autoremove\033[0m"; apt autoremove --yes) &&
-	if (dpkg -l | grep "ii  snapd") > /dev/null; then
-		(echo -e "\033[7msnap refresh\033[0m"; snap refresh &&
-		snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)";)
-	fi
+	(
+		echo -e "\033[7mapt update\033[0m"
+		apt update
+	) &&
+		(
+			echo -e "\033[7mapt upgrade\033[0m"
+			apt upgrade --yes
+		) &&
+		(
+			echo -e "\033[7mapt autoremove\033[0m"
+			apt autoremove --yes
+		) &&
+		if (dpkg -l | grep "ii  snapd") >/dev/null; then
+			(
+				echo -e "\033[7msnap refresh\033[0m"
+				snap refresh &&
+					snap set system refresh.hold="$(date --date="today+30 days" --iso-8601=seconds)"
+			)
+		fi
 }
 alias upupaway='sudo bash -c "$(declare -f upupaway_function); upupaway_function"'
 
 #Update dot-files from github or other places
 updots() {
-	HOSTSERVER="https://raw.githubusercontent.com/OmniMir/PowerTerminal/dev";
-	wget "$HOSTSERVER/.bashrc" -O "$HOME"/.bashrc -q && echo ".bashrc updated";
-	wget "$HOSTSERVER/.nanorc" -O "$HOME"/.nanorc -q && echo ".nanorc updated";
+	HOSTSERVER="https://raw.githubusercontent.com/OmniMir/PowerTerminal/dev"
+	wget "$HOSTSERVER/.bashrc" -O "$HOME"/.bashrc -q && echo ".bashrc updated"
+	wget "$HOSTSERVER/.nanorc" -O "$HOME"/.nanorc -q && echo ".nanorc updated"
 }
 #Install Required Software
 alias updots_required='sudo apt install caca-utils cloc endlessh inxi neofetch peco'
