@@ -33,7 +33,7 @@ alias diskspace='df -h --exclude-type=tmpfs --exclude-type=devtmpfs'
 alias grep='grep --color --ignore-case --line-number'
 alias goodbye='sudo shutdown -h now'                                                    #shutdown
 alias hardware='inxi -Fo'                                                               #view hardware information
-alias historybest='history | awk '{print $2}' | sort | uniq -c | sort -rn | head -n 25' #show 25 most use bash commands
+alias historybest='history | awk "{print $2}" | sort | uniq -c | sort -rn | head -n 25' #show 25 most use bash commands
 alias historydel='history -r'                                                           #delete bash commands from current session
 alias image='cacaview'                                                                  #image in terminal
 alias ls='ls --color --group-directories-first -p -1'                                   #show files&dirs in current directory
