@@ -96,7 +96,7 @@ Function Start-Docker-Simple-Control($command) {
 		git {
 			docker run -it --rm `
 				--name git `
-				-v ${home}/_GITPATH:/root `
+				-v ${home}/_GITPATH:/home/git `
 				-v ${pwd}:/project `
 				-w /project `
 				omnimir/git:latest `
