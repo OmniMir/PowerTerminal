@@ -40,9 +40,9 @@ Function Get-New-Generated-GUID() {
 }
 Set-Alias guid -Value Get-New-Generated-GUID
 
-##Windows grep Command
-Function Find-As-GREP($target) {
-	#Search string in all files at this location
+##Find in Files (Endless)
+Function Find-In-Files-Endless($target) {
+	#Search string in all files at this location and view results
 	Get-ChildItem -File -Recurse -Exclude *.exe, *.lnk, *.zip |
 	Select-String -Pattern $target -Context 1, 1 |
 	ForEach-Object {
@@ -60,7 +60,7 @@ Function Find-As-GREP($target) {
 		Write-Host $_.Context.PostContext -ForegroundColor DarkGray
 	}
 }
-Set-Alias grep -Value Find-As-GREP
+Set-Alias fife -Value Find-In-Files-Endless
 
 ##Interactive-CD
 Function Start-Interactive-Current-Directory($target) {
